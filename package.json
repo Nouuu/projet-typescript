@@ -1,0 +1,22 @@
+{
+  "name": "projet-typescript",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Projet angular de cours 1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/pokemon.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nouuu/projet-typescript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nouuu/projet-typescript/issues"
+  },
+  "homepage": "https://github.com/Nouuu/projet-typescript#readme"
+}
