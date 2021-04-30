@@ -24,7 +24,6 @@ describe('Test determine pokemon first attacker', function () {
         });
     */
 
-
     describe('When pokemon don\'t have same speed', function () {
         it('should return Pikachu when Pikachu 90 speed attack Carapuce 43 speed', async () => {
             expect(await determinefirstAttacker(pikachu, carapuce)).toBe(pikachu);

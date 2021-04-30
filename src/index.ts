@@ -11,6 +11,9 @@ async function startBattle() {
         throw new Error("Can't instantiate pokemon");
     }
 
+    carapuce.life *= 4;
+    pikachu.life *= 4;
+
     console.log(`Begin battle between ${carapuce.name} and ${pikachu.name}`);
     await fightArena(carapuce, pikachu);
 }

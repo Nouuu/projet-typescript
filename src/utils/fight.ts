@@ -16,7 +16,7 @@ export async function fightArena(pok1: Pokemon, pok2: Pokemon): Promise<Pokemon>
         const interval = setInterval(async () => {
             const victim: Pokemon = attacker == pok1 ? pok2 : pok1
             const damage: number = attacker.attackPokemon(victim);
-            console.log(`${attacker.name} attack ${victim.name} and deals ${damage} damage. ${victim.name} has ${victim.life} remaining`);
+            console.log(`${attacker.name} attack ${victim.name} and deals ${damage} damage. ${victim.name} has ${victim.life}HP remaining`);
 
             if (pok1.life === 0 || pok2.life === 0) {
                 resolve('')
