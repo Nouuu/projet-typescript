@@ -1,5 +1,4 @@
 import {Pokemon} from "../models/Pokemon";
-import {determinefirstAttacker} from "../utils/fight";
 
 
 let carapuce: Pokemon = new Pokemon({name: 'squirtle', speed: 43, attack: 48, life: 44});
@@ -7,7 +6,7 @@ let carapuce: Pokemon = new Pokemon({name: 'squirtle', speed: 43, attack: 48, li
 let pikachu: Pokemon = new Pokemon({name: 'pikachu', speed: 90, attack: 55, life: 35});
 //Pokemon { name: 'pikachu', speed: 90, attack: 55, life: 35 }
 
-describe('Test pokemon attack other Pokemon', function () {
+describe('Test pokemon attack other Pokemon function', function () {
     let randomMock: (() => number);
     beforeEach(() => {
         randomMock = () => 0.5;

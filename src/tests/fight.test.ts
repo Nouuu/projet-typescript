@@ -7,22 +7,7 @@ let carapuce: Pokemon = new Pokemon({name: 'squirtle', speed: 43, attack: 48, li
 let pikachu: Pokemon = new Pokemon({name: 'pikachu', speed: 90, attack: 55, life: 35});
 //Pokemon { name: 'pikachu', speed: 90, attack: 55, life: 35 }
 
-describe('Test determine pokemon first attacker', function () {
-
-    /*
-        beforeAll(async (done) => {
-            const carapucet = await getPokemonFromPokedex("squirtle");
-            const pikachut = await getPokemonFromPokedex("pikachu");
-            // console.log(carapuce);
-            // console.log(pikachu);
-            if (!carapucet || !pikachut) {
-                fail("Pokemons are null !");
-            }
-            carapuce = carapucet;
-            pikachu = pikachut;
-            done();
-        });
-    */
+describe('Test determine pokemon first attacker function', function () {
 
     describe('When pokemon don\'t have same speed', function () {
         it('should return Pikachu when Pikachu 90 speed attack Carapuce 43 speed', async () => {
@@ -52,4 +37,24 @@ describe('Test determine pokemon first attacker', function () {
             expect(await determinefirstAttacker(pikachu, carapuce, randomMock)).toBe(carapuce)
         });
     })
+})
+
+describe('Test pokemon fight Arena function',function () {
+    let randomMock: (() => number);
+    beforeEach(() => {
+        randomMock = () => 0.89;
+    });
+    afterEach(() => {
+        // Initial state
+        carapuce.speed = 43;
+        carapuce.life = 44;
+        pikachu.speed = 90;
+        pikachu.life = 35;
+    });
+
+    it('Should return as winner pikachu when carapuce has no chance',async function () {
+        carapuce.life = 1;
+        expect()
+    })
+
 })
