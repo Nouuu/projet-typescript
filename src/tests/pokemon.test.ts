@@ -1,6 +1,5 @@
 import {Pokemon} from "../models/Pokemon";
 import {determinefirstAttacker} from "../utils/fight";
-import {getPokemonFromPokedex} from "../utils/pokebuild";
 
 
 let carapuce: Pokemon = new Pokemon({name: 'squirtle', speed: 43, attack: 48, life: 44});
@@ -27,12 +26,12 @@ describe('Test determine pokemon first attacker', function () {
 
 
     describe('When pokemon don\'t have same speed', function () {
-        it('should return Pikachu when Pikachu 90 speed attack Carapuce 43 speed', () => {
-            expect(determinefirstAttacker(pikachu, carapuce)).toBe(pikachu);
+        it('should return Pikachu when Pikachu 90 speed attack Carapuce 43 speed', async () => {
+            expect(await determinefirstAttacker(pikachu, carapuce)).toBe(pikachu);
         });
-        it('should return Carapuce when Pikachu 90 speed attack Carapuce 100 speed', () => {
+        it('should return Carapuce when Pikachu 90 speed attack Carapuce 100 speed', async () => {
             carapuce.speed = 100;
-            expect(determinefirstAttacker(pikachu, carapuce)).toBe(carapuce);
+            expect(await determinefirstAttacker(pikachu, carapuce)).toBe(carapuce);
         });
     });
     describe('When pokemon have same speed', function () {
@@ -46,12 +45,12 @@ describe('Test determine pokemon first attacker', function () {
             carapuce.speed = 43;
             pikachu.speed = 90;
         });
-        it('Should return pikachu (1st pokemon) when rand > 0.5', function () {
-            expect(determinefirstAttacker(pikachu, carapuce, randomMock)).toBe(pikachu)
+        it('Should return pikachu (1st pokemon) when rand > 0.5', async function () {
+            expect(await determinefirstAttacker(pikachu, carapuce, randomMock)).toBe(pikachu)
         });
-        it('Should return carapuce (2nd pokemon) when rand <= 0.5', function () {
+        it('Should return carapuce (2nd pokemon) when rand <= 0.5', async function () {
             randomMock = () => 0.5;
-            expect(determinefirstAttacker(pikachu, carapuce, randomMock)).toBe(carapuce)
+            expect(await determinefirstAttacker(pikachu, carapuce, randomMock)).toBe(carapuce)
         });
     })
 })

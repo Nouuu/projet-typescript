@@ -1,4 +1,21 @@
 import {Pokemon} from './models/Pokemon';
+import {getPokemonFromPokedex} from "./utils/pokebuild";
+import {fightArena} from "./utils/fight";
 
-const carapuce: Pokemon = new Pokemon({name: "bulbasaur", speed: 10});
-const pikachu: Pokemon = new Pokemon({name: "pikachu", speed: 12});
+
+async function startBattle() {
+    const carapuce: Pokemon | null = await getPokemonFromPokedex("squirtle");
+    const pikachu: Pokemon | null = await getPokemonFromPokedex("pikachu");
+
+    if (carapuce === null || pikachu === null) {
+        throw new Error("Can't instantiate pokemon");
+    }
+
+    console.log(`Begin battle between ${carapuce.name} and ${pikachu.name}`);
+    await fightArena(carapuce, pikachu);
+}
+
+
+startBattle().finally(() => {
+    console.log("Done")
+});
