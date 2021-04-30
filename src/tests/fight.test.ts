@@ -1,5 +1,5 @@
 import {Pokemon} from "../models/Pokemon";
-import {determinefirstAttacker} from "../utils/fight";
+import {determinefirstAttacker, fightArena} from "../utils/fight";
 
 
 let carapuce: Pokemon = new Pokemon({name: 'squirtle', speed: 43, attack: 48, life: 44});
@@ -54,7 +54,19 @@ describe('Test pokemon fight Arena function',function () {
 
     it('Should return as winner pikachu when carapuce has no chance',async function () {
         carapuce.life = 1;
-        expect()
+        expect(await fightArena(pikachu, carapuce)).toBe(pikachu);
+    })
+
+    it('Should return as winner carapuce when pikachu has no chance on long fight',async function () {
+        carapuce.life = 1000;
+        expect(await fightArena(pikachu, carapuce)).toBe(carapuce);
+    })
+
+    it('Should throw error if one of pokemon is dead',async function () {
+        carapuce.life = 0;
+        await expect(async () => {
+            await fightArena(pikachu, carapuce)
+        }).rejects.toThrow("One or both pokemon is / are dead so can't fight");
     })
 
 })

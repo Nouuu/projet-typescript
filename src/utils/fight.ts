@@ -27,11 +27,6 @@ export async function startAttackInterval(attacker: Pokemon, pok1: Pokemon, pok2
 }
 
 export async function fightArena(pok1: Pokemon, pok2: Pokemon): Promise<Pokemon> {
-
-    if (!pok1 || !pok2) {
-        throw new Error("Null object provided");
-    }
-
     if (isAnyPokemonDead(pok1, pok2)) {
         throw new Error("One or both pokemon is / are dead so can't fight");
     }
